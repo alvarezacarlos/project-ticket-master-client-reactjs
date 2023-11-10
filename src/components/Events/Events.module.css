@@ -1,0 +1,30 @@
+.events {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 16px;
+
+  width: 80vw;
+  max-width: 1300px;
+  background-color: #fcfcfa;
+  padding: 24px;
+  border-radius: 5px;
+}
+
+
+@media (max-width: 850px){
+  .events {    
+    width: 96vw;
+    padding: 0;    
+  }
+}  /*tablet*/
+
+
+
+@media (max-width: 700px){
+  .events {    
+    width: 90vw;
+    padding: 24px;    
+  }
+}  /*Celulares*/

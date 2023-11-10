@@ -1,0 +1,63 @@
+.eventItemContainer {
+  background-color: #fff;
+  display: grid;
+  /* justify-content: center; */
+  grid-template-columns: 1fr 3fr;  
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #8d8585;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px 0 0 5px;
+}
+
+.eventItemDetails {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.name {
+  color: #0f1f32;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.info {
+  color: #0f1f32;
+  padding: 10px;
+  text-align: justify;
+  font-size: 0.8rem;
+}
+
+.readMoreButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  background-color: #e7472e;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 5px;
+  margin-top: 14px;
+}
+
+
+@media (max-width: 850px){
+  .eventItemContainer {    
+    grid-template-columns: 2fr 3fr;
+  }
+}  /*tablet*/
+
+
+@media (max-width: 700px){
+  .eventItemContainer {    
+    grid-template-columns: 1fr;    
+  }
+}  /*Celulares*/

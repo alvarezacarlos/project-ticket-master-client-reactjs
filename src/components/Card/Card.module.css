@@ -1,0 +1,9 @@
+.card {  
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center; 
+  padding: 40px 40px; 
+  gap: 16px;  
+  text-align: justify;
+}

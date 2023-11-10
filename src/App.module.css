@@ -1,0 +1,21 @@
+.app{  
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.mainContainer{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center; 
+  width: 80vw; 
+  max-width: 1300px;
+  min-height: 100vh;
+
+  background-color: #fcfcfa;
+  padding: 30px;
+  border-radius: 12px;
+}
