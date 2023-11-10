@@ -3,10 +3,14 @@ import EventItem from "./EventItem";
 
 import { useNavigate } from "react-router-dom";
 
+import useEventsResult from "../../state/events-result";
+
 import styles from "./Events.module.css";
 
-const Events = ({ searchedTerm, events }) => {
+const Events = ({ searchedTerm }) => {
   const navigate = useNavigate();
+
+  const { events } = useEventsResult()
 
   let filteredEvents = events;
 

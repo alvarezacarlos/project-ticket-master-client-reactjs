@@ -5,7 +5,8 @@ import { useParams, Link } from "react-router-dom";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 
-import useFetchEventById from "../../hooks/useFetchEventById";
+// import useFetchEventById from "../../hooks/useFetchEventById";
+import useEventsResult from "../../state/events-result";
 
 import Wrapper from "../../components/Wrapper";
 import Card from "../../components/Card";
@@ -13,38 +14,16 @@ import Card from "../../components/Card";
 import styles from "./Detail.module.css";
 
 const Detail = () => {
-  const { eventId } = useParams();
-  const { event, isLoading, error, fetchEventById } = useFetchEventById();
+  const { eventId } = useParams();  
+  const { events } = useEventsResult()
 
-  useEffect(() => {
-    fetchEventById({ eventId });
-  }, []);
+  const eventClicked = events.find(eventItem => eventItem.id === eventId)
 
-  if (isLoading) {
+  if (!eventClicked) {
     return (
       <Wrapper>
         <Card>
-          <div>Loading...</div>
-        </Card>
-      </Wrapper>
-    );
-  }
-
-  if (error) {
-    return (
-      <Wrapper>
-        <Card>
-          <div>Error...</div>
-        </Card>
-      </Wrapper>
-    );
-  }
-
-  if (!event) {
-    return (
-      <Wrapper>
-        <Card>
-          <div>Event not found</div>
+          <div>Sorry! We could not load the Event details.</div>
         </Card>
       </Wrapper>
     );
@@ -53,14 +32,14 @@ const Detail = () => {
   return (
     <Wrapper>
       <Card>
-        <img className={styles.image} src={event.images?.[0].url} alt="" />
+        <img className={styles.image} src={eventClicked.images?.[0].url} alt="" />
 
-        <h4>{event.name}</h4>
-        <p>{event.info}</p>
+        <h4>{eventClicked.name}</h4>
+        <p>{eventClicked.info}</p>
 
-        {event.dates?.start.dateTime ? (
+        {eventClicked.dates?.start.dateTime ? (
           <p>
-            {format(new Date(event.dates?.start.dateTime), "d LLLL yyyy H:mm", {
+            {format(new Date(eventClicked.dates?.start.dateTime), "d LLLL yyyy H:mm", {
               locale: es,
             })}{" "}
             hrs
