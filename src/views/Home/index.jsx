@@ -95,6 +95,7 @@ const Home = () => {
           pageRangeDisplayed={5}
           onPageChange={handlePageClick}   
           style={{display: isLoading ? 'none': 'block'}}
+          marginPagesDisplayed={0}
         />
       )}
     </Wrapper>
