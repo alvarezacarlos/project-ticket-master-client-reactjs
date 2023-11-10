@@ -27,8 +27,7 @@ const Events = ({ searchedTerm }) => {
     navigate(`/detail/${eventId}`);
   };
 
-  const renderEventsListItems = () => {
-    console.log()
+  const renderEventsListItems = () => {    
     // return events.map((eventItem) => (
     return filteredEvents.map((eventItem) => (      
       <EventItem

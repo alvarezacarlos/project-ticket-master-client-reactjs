@@ -78,26 +78,24 @@ const Home = () => {
   return (
     <Wrapper>
       <SearchBar onSearch={handleInputSearch} />
-      {renderEventsList()}
-      {!error && (
-        <ReactPaginate
-          className={styles.pagination}
-          pageClassName={styles.page}
-          activeClassName={styles.activePage}
-          disabledClassName={styles.disabledPage}
-          nextClassName={styles.next}
-          previousClassName={styles.previous}
-          previousLabel={"<"}
-          nextLabel={">"}
-          breakLabel={"..."}
-          renderOnZeroPageCount={null}
-          pageCount={page.totalPages}
-          pageRangeDisplayed={5}
-          onPageChange={handlePageClick}   
-          style={{display: isLoading ? 'none': 'block'}}
-          marginPagesDisplayed={0}
-        />
-      )}
+      {renderEventsList()}      
+      <ReactPaginate
+        className={styles.pagination}
+        pageClassName={styles.page}
+        activeClassName={styles.activePage}
+        disabledClassName={styles.disabledPage}
+        nextClassName={styles.next}
+        previousClassName={styles.previous}
+        previousLabel={"<"}
+        nextLabel={">"}
+        breakLabel={"..."}
+        renderOnZeroPageCount={null}
+        pageCount={page.totalPages}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageClick}   
+        style={{visibility: isLoading ? 'hidden': 'block'}}
+        marginPagesDisplayed={0}
+      />
     </Wrapper>
   );
 };
