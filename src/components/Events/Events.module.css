@@ -7,9 +7,9 @@
 
   width: 80vw;
   max-width: 1300px;
-  background-color: #fcfcfa;
   padding: 24px;
   border-radius: 5px;
+  /* min-height: 80vh; */
 }
 
 

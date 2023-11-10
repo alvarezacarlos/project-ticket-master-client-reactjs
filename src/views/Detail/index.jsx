@@ -14,10 +14,11 @@ import Card from "../../components/Card";
 import styles from "./Detail.module.css";
 
 const Detail = () => {
-  const { eventId } = useParams();  
-  const { events } = useEventsResult()
+  const { eventId } = useParams();
+  const { data  } = useEventsResult();
+  const events = data?._embedded?.events
 
-  const eventClicked = events.find(eventItem => eventItem.id === eventId)
+  const eventClicked = events.find((eventItem) => eventItem.id === eventId);
 
   if (!eventClicked) {
     return (
@@ -32,16 +33,24 @@ const Detail = () => {
   return (
     <Wrapper>
       <Card>
-        <img className={styles.image} src={eventClicked.images?.[0].url} alt="" />
+        <img
+          className={styles.image}
+          src={eventClicked.images?.[0].url}
+          alt=""
+        />
 
         <h4>{eventClicked.name}</h4>
         <p>{eventClicked.info}</p>
 
         {eventClicked.dates?.start.dateTime ? (
           <p>
-            {format(new Date(eventClicked.dates?.start.dateTime), "d LLLL yyyy H:mm", {
-              locale: es,
-            })}{" "}
+            {format(
+              new Date(eventClicked.dates?.start.dateTime),
+              "d LLLL yyyy H:mm",
+              {
+                locale: es,
+              }
+            )}{" "}
             hrs
           </p>
         ) : null}

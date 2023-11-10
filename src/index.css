@@ -9,13 +9,12 @@ body {
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
-  justify-content: center;
-  background-color: #fcfcfa;
+  justify-content: center;  
+  background-color: #fcfcfaad;
 }
 
 #root {  
-  min-height: 100vh;
-
+  min-height: 100vh;  
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;

@@ -26,13 +26,23 @@ const useFetchEvents = () => {
     }
   };
 
+  // return {
+  //   events: data?._embedded?.events,
+  //   page: data?.page,
+  //   isLoading,
+  //   error,
+  //   fetchEvents,
+  // };
+
+
   return {
-    events: data?._embedded?.events || [],
-    page: data?.page || {},
+    data,
     isLoading,
     error,
     fetchEvents,
   };
+
+
 };
 
 export default useFetchEvents;

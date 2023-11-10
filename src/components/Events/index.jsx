@@ -10,13 +10,16 @@ import styles from "./Events.module.css";
 const Events = ({ searchedTerm }) => {
   const navigate = useNavigate();
 
-  const { events } = useEventsResult()
+  const { data } = useEventsResult();
+  const events = data?._embedded?.events;
 
   let filteredEvents = events;
 
   if (searchedTerm.length > 0) {
     filteredEvents.find((eventItem) =>
-      eventItem.name.toLocaleLowerCase().includes(searchedTerm.toLocaleLowerCase())
+      eventItem.name
+        .toLocaleLowerCase()
+        .includes(searchedTerm.toLocaleLowerCase())
     );
   }
 
