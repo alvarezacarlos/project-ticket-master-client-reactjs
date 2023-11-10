@@ -73,6 +73,8 @@ const Home = () => {
     return <div className="home">{<Events searchedTerm={searchedTerm} />}</div>;
   };
 
+  console.log(events)
+
   return (
     <Wrapper>
       <SearchBar onSearch={handleInputSearch} />

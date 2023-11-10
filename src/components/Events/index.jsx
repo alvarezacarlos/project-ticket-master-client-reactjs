@@ -28,12 +28,13 @@ const Events = ({ searchedTerm }) => {
   };
 
   const renderEventsListItems = () => {
+    console.log()
     // return events.map((eventItem) => (
-    return filteredEvents.map((eventItem) => (
+    return filteredEvents.map((eventItem) => (      
       <EventItem
         key={`event-item-${eventItem.id}`}
         name={eventItem.name}
-        info={eventItem.info}
+        info={eventItem?.ticketLimit.info }
         image={eventItem.images[0].url}
         eventId={eventItem.id}
         onEventClick={handleEventItemClick}
