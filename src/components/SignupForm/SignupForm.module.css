@@ -1,0 +1,60 @@
+.signUpFormContainer {
+  max-width: 1300px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-self: center;
+  justify-self: center;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+}
+
+.signUpFormContainer h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+}
+
+.signUpform {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px; 
+
+  padding: 20px 40px;  
+}
+
+.signUpFormGroup {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.signUpFormGroup input,
+.buttonsContainer button {
+  padding: 10px 14px;
+  outline: none;
+  border: none;
+  transition: 0.4s;  
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-style: italic;
+}
+
+.buttonsContainer {
+  width: 50%;
+  display: flex;
+  align-self: center;
+  justify-content: flex-end;
+  align-items: center;  
+  padding: 10px 0px;
+}
+
+.buttonsContainer button {
+  cursor: pointer;
+}

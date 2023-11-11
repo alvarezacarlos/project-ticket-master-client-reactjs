@@ -52,9 +52,7 @@ const Home = () => {
     ({ selected }) => {
       const searchedTermParam =
         searchedTerm?.trim().length > 0 ? `&keyword=${searchedTerm}` : "";
-      fetchEvents({ urlParams: `${searchedTermParam}&page=${selected}` });
-      console.log(selected);
-      console.log(`${searchedTermParam}&page=${selected}`);
+      fetchEvents({ urlParams: `${searchedTermParam}&page=${selected}` });      
     },
     [searchedTerm, fetchEvents]
   );
@@ -71,9 +69,7 @@ const Home = () => {
     }    
 
     return <div className="home">{<Events searchedTerm={searchedTerm} />}</div>;
-  };
-
-  console.log(events)
+  };  
 
   return (
     <Wrapper>
@@ -90,7 +86,7 @@ const Home = () => {
         nextLabel={">"}
         breakLabel={"..."}
         renderOnZeroPageCount={null}
-        pageCount={page.totalPages}
+        pageCount={page?.totalPages || 0}
         pageRangeDisplayed={5}
         onPageChange={handlePageClick}   
         style={{visibility: isLoading ? 'hidden': 'block'}}
