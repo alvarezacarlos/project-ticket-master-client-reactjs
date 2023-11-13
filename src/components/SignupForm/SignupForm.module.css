@@ -8,13 +8,13 @@
   align-items: center;
   justify-content: center;
 
-  padding: 30px;
+  /* padding: 30px; */
 }
 
 .signUpFormContainer h3 {
   text-align: center;
   font-size: 1.5rem;
-  padding: 10px 20px;
+  padding: 20px 0;
 }
 
 .signUpform {
@@ -22,9 +22,9 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  gap: 12px; 
+  gap: 12px;
 
-  padding: 20px 40px;  
+  padding: 0 40px;
 }
 
 .signUpFormGroup {
@@ -40,7 +40,7 @@
   padding: 10px 14px;
   outline: none;
   border: none;
-  transition: 0.4s;  
+  transition: 0.4s;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-style: italic;
@@ -51,10 +51,27 @@
   display: flex;
   align-self: center;
   justify-content: flex-end;
-  align-items: center;  
-  padding: 10px 0px;
+  align-items: center;
+  padding: 10px 0 0 0 ;
 }
 
 .buttonsContainer button {
   cursor: pointer;
+  background-color: #e7472e;
+  color: #fff;
+  font-size: 1rem;
 }
+
+@media (max-width: 850px) {
+  .signUpFormGroup {
+    flex-direction: column;
+  }
+  .buttonsContainer {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .buttonsContainer button {
+    width: 100%;
+  }
+} /*tablet*/

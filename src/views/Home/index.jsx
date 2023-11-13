@@ -18,11 +18,12 @@ import SearchBar from "../../components/SearchBar";
 import styles from "./Home.module.css";
 
 const Home = () => {
-  // const { events, page, isLoading, error, fetchEvents } = useFetchEvents();
-  // const { data, isLoading, error, fetchEvents } = useFetchEvents();
-  const { data, isLoading, error, fetchEvents } = useEventsResult();
+  // const { events, page, isLoading, isError, error, fetchEvents } = useFetchEvents();
+  // const { data, isLoading, isError, error, fetchEvents } = useFetchEvents();
+  const { data, isLoading, isError, error, fetchEvents } = useEventsResult();
 
   const [searchedTerm, setSearchedTerm] = useState("");
+  const [selectedPage, setSelectedPage] = useState(0);
 
   const events = useMemo(
     () => data?._embedded?.events || [],
@@ -31,7 +32,6 @@ const Home = () => {
   const page = useMemo(() => data?.page || {}, [data?.page]);
   // const events = data?._embedded?.events || []
   // const page = data?.page || {}
-
 
   const refFetchEvents = useRef();
   refFetchEvents.current = fetchEvents;
@@ -46,13 +46,17 @@ const Home = () => {
     fetchEvents({ urlParams: `&keyword=${searchedEventTerm}` });
   };
 
-
+  useEffect(() => {
+    const searchedTermParam =
+      searchedTerm?.trim().length > 0 ? `&keyword=${searchedTerm}` : "";
+    refFetchEvents.current({
+      urlParams: `${searchedTermParam}&page=${selectedPage}`,
+    });
+  }, [selectedPage]);
 
   const handlePageClick = useCallback(
     ({ selected }) => {
-      const searchedTermParam =
-        searchedTerm?.trim().length > 0 ? `&keyword=${searchedTerm}` : "";
-      fetchEvents({ urlParams: `${searchedTermParam}&page=${selected}` });      
+      setSelectedPage(selected);
     },
     [searchedTerm, fetchEvents]
   );
@@ -61,37 +65,43 @@ const Home = () => {
     if (isLoading) {
       return <div>Loading data...</div>;
     }
-    if (error) {
+    if (isError) {
       return <div>Error when loading...</div>;
     }
     if (!events?.length > 0) {
-      return <div>Sorry! There is no event with you search term.</div>;
-    }    
+      return <div>Sorry! There is no event with your search term.</div>;
+    }
 
-    return <div className="home">{<Events searchedTerm={searchedTerm} />}</div>;
-  };  
+    return (
+      <div className="home">
+        <Events />
+      </div>
+    );
+  };
 
   return (
     <Wrapper>
       <SearchBar onSearch={handleInputSearch} />
-      {renderEventsList()}      
-      <ReactPaginate
-        className={styles.pagination}
-        pageClassName={styles.page}
-        activeClassName={styles.activePage}
-        disabledClassName={styles.disabledPage}
-        nextClassName={styles.next}
-        previousClassName={styles.previous}
-        previousLabel={"<"}
-        nextLabel={">"}
-        breakLabel={"..."}
-        renderOnZeroPageCount={null}
-        pageCount={page?.totalPages || 0}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageClick}   
-        style={{visibility: isLoading ? 'hidden': 'block'}}
-        marginPagesDisplayed={0}
-      />
+      {renderEventsList()}
+
+      <div style={{ visibility: isLoading || isError ? "hidden" : "visible" }}>
+        <ReactPaginate
+          className={styles.pagination}
+          pageClassName={styles.page}
+          activeClassName={styles.activePage}
+          disabledClassName={styles.disabledPage}
+          nextClassName={styles.next}
+          previousClassName={styles.previous}
+          previousLabel={"<"}
+          nextLabel={">"}
+          breakLabel={"..."}
+          renderOnZeroPageCount={null}
+          pageCount={data?.page?.totalPages || 0}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          marginPagesDisplayed={0}
+        />
+      </div>
     </Wrapper>
   );
 };

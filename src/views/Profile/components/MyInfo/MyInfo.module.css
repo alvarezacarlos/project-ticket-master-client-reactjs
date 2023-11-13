@@ -1,0 +1,9 @@
+.infoContainer{
+  width: 80vw;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;  
+  gap: 16px;
+  padding: 10px 20px;  
+}

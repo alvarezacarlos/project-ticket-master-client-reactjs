@@ -2,15 +2,36 @@
   background-color: #fff;
   display: grid;
   /* justify-content: center; */
-  grid-template-columns: 1fr 3fr;  
+  grid-template-columns: 1fr 3fr;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.imagesContainer {
+  position: relative;  
+  padding: 8px;
+}
+
+.likeImage {
+  position: absolute;
+  width: 35px;
+  z-index: 1;
+  cursor: pointer;
+  padding: 8px;
+  top: 10px;
+  left: 10px;  
 }
 
 .image {
   width: 100%;
   height: 100%;
   border-radius: 5px 0 0 5px;
+}
+
+.eventItemDetailsContianer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .eventItemDetails {
@@ -48,15 +69,14 @@
 }
 
 
-@media (max-width: 850px){
-  .eventItemContainer {    
+@media (max-width: 850px) {
+  .eventItemContainer {
     grid-template-columns: 2fr 3fr;
   }
-}  /*tablet*/
+} /*tablet*/
 
-
-@media (max-width: 700px){
-  .eventItemContainer {    
-    grid-template-columns: 1fr;    
+@media (max-width: 700px) {
+  .eventItemContainer {
+    grid-template-columns: 1fr;
   }
-}  /*Celulares*/
+} /*Celulares*/

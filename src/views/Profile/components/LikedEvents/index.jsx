@@ -1,15 +1,17 @@
-import React from 'react'
+import React from "react";
 
+import useEventsResult from "../../../../state/events-result";
 
+import Events from "../../../../components/Events";
 
-import styles from './LikedEvents.module.css'
+import styles from "./LikedEvents.module.css";
+
 
 const LikedEvents = () => {
-  return (
-    <div>
-      Linked Events
-    </div>
-  )
-}
+  // const events = localStorage.getItem('likedEvents')
 
-export default LikedEvents
+  // useEventsResult
+  return <Events />;
+};
+
+export default LikedEvents;

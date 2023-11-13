@@ -2,38 +2,41 @@ import React from "react";
 
 import { useState } from "react";
 
-// import { useForm } from "react-hook-form";
+import useUserData from "../../state/user-data";
 
 import styles from "./SignupForm.module.css";
 
+const USER_DATA = "userData";
+
 const SignupForm = () => {
+  const { updateUserData, isLoading, error } = useUserData();
+
   // without react-hook-form
-  const [signUpFormInputs, setSignUpFormInputs] = useState({
+  const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
-    alias: "",
+    alias: ""    
   });
 
   // without react-hook-form
   const handleClearClick = () => {
-    setSignUpFormInputs({
-      ...signUpFormInputs,
+    setUserData({
+      ...userData,
       firstName: "",
       lastName: "",
-      alias: "",
+      alias: ""      
     });
   };
 
-  const handleOnsubmitForm = (e) => {
+  const handleOnsubmitForm = (e) => {    
     e.preventDefault();
-    console.log("submit", signUpFormInputs);
-
+    updateUserData({ ...userData });
     handleClearClick();
   };
 
   return (
     <div className={styles.signUpFormContainer}>
-      <h3>Let's upate your profile!</h3>
+      <h3>Update Profile ?</h3>
       <form className={styles.signUpform} onSubmit={handleOnsubmitForm}>
         {/* firstName */}
         <div className={styles.signUpFormGroup}>
@@ -42,13 +45,14 @@ const SignupForm = () => {
             type="text"
             name="firstName"
             id="firstName"
-            value={signUpFormInputs.firstName}
+            value={userData.firstName}
             onChange={(e) =>
-              setSignUpFormInputs({
-                ...signUpFormInputs,
+              setUserData({
+                ...userData,
                 firstName: e.target.value,
               })
             }
+            required
           />
         </div>
         {/* lastName */}
@@ -58,13 +62,14 @@ const SignupForm = () => {
             type="text"
             name="lastName"
             id="lastName"
-            value={signUpFormInputs.lastName}
+            value={userData.lastName}
             onChange={(e) =>
-              setSignUpFormInputs({
-                ...signUpFormInputs,
+              setUserData({
+                ...userData,
                 lastName: e.target.value,
               })
             }
+            required
           />
         </div>
         {/* alias */}
@@ -74,20 +79,31 @@ const SignupForm = () => {
             type="text"
             name="alias"
             id="alias"
-            value={signUpFormInputs.alias}
+            value={userData.alias}
             onChange={(e) =>
-              setSignUpFormInputs({
-                ...signUpFormInputs,
+              setUserData({
+                ...userData,
                 alias: e.target.value,
               })
             }
+            required
           />
         </div>
 
         <div className={styles.buttonsContainer}>
-          <button type="submit">Submit</button>
+          <button
+            type="submit"            
+          >
+            Submit
+          </button>
         </div>
       </form>
+      <div
+        className={styles.modal}
+        style={{ display: !isLoading ? "none" : "block" }}
+      >
+        loading
+      </div>
     </div>
   );
 };
