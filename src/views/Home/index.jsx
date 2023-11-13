@@ -14,6 +14,7 @@ import Events from "../../components/Events";
 import Navbar from "../../components/Navbar";
 import Wrapper from "../../components/Wrapper";
 import SearchBar from "../../components/SearchBar";
+import Spinner from "../../components/Spinner";
 
 import styles from "./Home.module.css";
 
@@ -63,7 +64,7 @@ const Home = () => {
 
   const renderEventsList = () => {
     if (isLoading) {
-      return <div>Loading data...</div>;
+      return <Spinner isLoading={isLoading}/>;
     }
     if (isError) {
       return <div>Error when loading...</div>;

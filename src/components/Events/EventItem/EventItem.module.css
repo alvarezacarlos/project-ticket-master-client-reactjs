@@ -63,7 +63,7 @@
   cursor: pointer;
   background-color: #e7472e;
   color: #fff;
-  transition: background-color 0.3s, color 0.3s;
+  /* transition: background-color 0.3s, color 0.3s; */
   border-radius: 5px;
   margin-top: 14px;
 }

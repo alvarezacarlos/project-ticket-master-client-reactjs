@@ -4,7 +4,7 @@ import Routes from "./routes";
 import styles from "./App.module.css";
 
 function App() {
-  return <Routes />;
+  return <Routes />;  
 }
 
 export default App;

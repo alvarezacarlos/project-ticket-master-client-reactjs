@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import useUserData from "../../state/user-data";
 
+import Spinner from "../Spinner";
+
 import styles from "./SignupForm.module.css";
 
 const USER_DATA = "userData";
@@ -15,7 +17,7 @@ const SignupForm = () => {
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
-    alias: ""    
+    alias: "",
   });
 
   // without react-hook-form
@@ -24,11 +26,11 @@ const SignupForm = () => {
       ...userData,
       firstName: "",
       lastName: "",
-      alias: ""      
+      alias: "",
     });
   };
 
-  const handleOnsubmitForm = (e) => {    
+  const handleOnsubmitForm = (e) => {
     e.preventDefault();
     updateUserData({ ...userData });
     handleClearClick();
@@ -91,19 +93,14 @@ const SignupForm = () => {
         </div>
 
         <div className={styles.buttonsContainer}>
-          <button
-            type="submit"            
-          >
-            Submit
-          </button>
+          <button type="submit">Submit</button>
+        </div>
+
+        {/* <div className={styles.overlay} style={{visibility: isLoading ? 'visible': 'hidden'}}> */}
+        <div className={styles.overlay} style={{display: isLoading ? 'flex': 'none'}}>          
+          <Spinner isLoading={isLoading}/>
         </div>
       </form>
-      <div
-        className={styles.modal}
-        style={{ display: !isLoading ? "none" : "block" }}
-      >
-        loading
-      </div>
     </div>
   );
 };
