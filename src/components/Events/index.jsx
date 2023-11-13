@@ -27,7 +27,11 @@ const Events = () => {
   const handleEventItemClick = (eventId) => {
     navigate(`/detail/${eventId}`);
   };
-  
+
+  if (pathname.includes("liked-events") & !filteredEvents?.length > 0) {
+    return <div>You do not have favorite events yet.</div>
+  }  
+
   const renderEventsListItems = () => {
     return filteredEvents?.map((eventItem) => (
       <EventItem
