@@ -43,7 +43,7 @@ const useEventsResult = create((set) => ({
         isError: true,
       }));
 
-      console.log(responseError);
+      // console.log(responseError);
     }
   },
   updateLikedEvent: async (eventId) => {
@@ -72,7 +72,7 @@ const useEventsResult = create((set) => ({
       });      
       await localStorage.setItem("likedEvents", JSON.stringify(likedEvents));
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   },
 }));

@@ -22,7 +22,7 @@ const Events = () => {
     filteredEvents = events?.filter((event) => event.liked === true);
   }
 
-  console.log("filteredEvents", filteredEvents);
+  // console.log("filteredEvents", filteredEvents);
 
   const handleEventItemClick = (eventId) => {
     navigate(`/detail/${eventId}`);

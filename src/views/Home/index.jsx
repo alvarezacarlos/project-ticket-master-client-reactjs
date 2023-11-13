@@ -64,7 +64,7 @@ const Home = () => {
 
   const renderEventsList = () => {
     if (isLoading) {
-      return <Spinner isLoading={isLoading}/>;
+      return <Spinner/>;
     }
     if (isError) {
       return <div>Error when loading...</div>;

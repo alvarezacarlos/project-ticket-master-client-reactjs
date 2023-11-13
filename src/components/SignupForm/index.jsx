@@ -98,7 +98,7 @@ const SignupForm = () => {
 
         {/* <div className={styles.overlay} style={{visibility: isLoading ? 'visible': 'hidden'}}> */}
         <div className={styles.overlay} style={{display: isLoading ? 'flex': 'none'}}>          
-          <Spinner isLoading={isLoading}/>
+          <Spinner />
         </div>
       </form>
     </div>

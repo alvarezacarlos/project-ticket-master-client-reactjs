@@ -32,14 +32,14 @@ const EventItem = ({ eventId, onEventClick, onEventLike }) => {
     <div
       className={styles.eventItemContainer}      
     >
-      <div className={styles.imagesContainer}>
-        <img src={image} alt={name} className={styles.image} />
+      <div className={styles.imagesContainer}>        
         <img
           src={liked ? likedEventImage : unlikedEventImage}
           alt="Like Button"
           className={styles.likeImage}
           onClick={handleLikeImage}
         />
+        <img src={image} alt={name} className={styles.image} />
       </div>
       <div className={styles.eventItemDetailsContianer}>
         <div className={styles.eventItemDetails}>

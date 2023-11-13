@@ -10,12 +10,12 @@
 .imagesContainer {
   position: relative;  
   padding: 8px;
+  z-index: 1;
 }
 
 .likeImage {
   position: absolute;
-  width: 35px;
-  z-index: 1;
+  width: 35px;  
   cursor: pointer;
   padding: 8px;
   top: 10px;
